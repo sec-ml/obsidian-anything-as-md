@@ -1,7 +1,7 @@
 {
 	"name": "anything-as-md",
 	"version": "1.0.0",
-	"description": "Allow Obsidian to read any file extension as markdown (e.g. mdx, svx, rmd, qmd). User-configurable list in settings.",
+	"description": "Very simple plugin that allows any file extension to be registered as Markdown (e.g. mdx, svx, rmd, qmd, mdown, mkdn, mkd, mdwn, mdtxt, mdtext, myst, markua). User-configurable in settings.",
 	"main": "main.js",
 	"type": "module",
 	"scripts": {
