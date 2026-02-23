@@ -1,30 +1,70 @@
-# Obsidian Sample Plugin
+# Anything as md
 
-This is a sample plugin for Obsidian (https://obsidian.md).
+Obsidian is great at markdown... that's what it does. But sometimes markdown &ne; `.md`.
 
-This project uses TypeScript to provide type checking and documentation.
-The repo depends on the latest plugin API (obsidian.d.ts) in TypeScript Definition format, which contains TSDoc comments describing what it does.
+There are a few plugins that add support for specfic extensions (`.mdx` probably being the most common), but `Anything as .md` allows you to enter a list of extensions that you want Obsidian to recognise as markdown syntax.
 
-This sample plugin demonstrates some of the basic functionality the plugin API can do.
-- Adds a ribbon icon, which shows a Notice when clicked.
-- Adds a command "Open modal (simple)" which opens a Modal.
-- Adds a plugin setting tab to the settings page.
-- Registers a global click event and output 'click' to the console.
-- Registers a global interval which logs 'setInterval' to the console.
+## What extensions are supported?
 
-## First time developing plugins?
+Well... any! But I guess for findability reasons, I'll list some:
 
-Quick starting guide for new plugin devs:
+- .mdx
+- .svx
+- .rmd
+- .qmd
+- .mdown
+- .mkdn
+- .mkd
+- .mdwn
+- .mdtxt
+- .mdtext
+- .myst
+- .markua
+- .pdc
+- .pandoc
 
-- Check if [someone already developed a plugin for what you want](https://obsidian.md/plugins)! There might be an existing plugin similar enough that you can partner up with.
-- Make a copy of this repo as a template with the "Use this template" button (login to GitHub if you don't see it).
-- Clone your repo to a local development folder. For convenience, you can place this folder in your `.obsidian/plugins/your-plugin-name` folder.
-- Install NodeJS, then run `npm i` in the command line under your repo folder.
-- Run `npm run dev` to compile your plugin from `main.ts` to `main.js`.
-- Make changes to `main.ts` (or create new `.ts` files). Those changes should be automatically compiled into `main.js`.
-- Reload Obsidian to load the new version of your plugin.
-- Enable plugin in settings window.
-- For updates to the Obsidian API run `npm update` in the command line under your repo folder.
+...you get the idea.
+
+## Will Obsidian read my files correctly?
+
+Markdown syntax will be understood and rendered correctly. I have no idea how other elements (jsx blocks, R code blocks, etc.) will fare. This plugin is solely for enabling visibility of the file, anything beyond that is up to you.
+
+## How to contribute to this plugin
+
+1. **Fork and clone**
+   - [Fork this repo](https://github.com/sec-ml/anything-as-md/fork).
+   - Clone your fork:
+   ```bash
+   git clone https://github.com/<your username>/anything-as-md.git
+   cd anything-as-md
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+   Node.js 16+ is required (`node --version`).
+
+3. **Build the plugin**
+   ```bash
+   npm run build
+   ```
+   This compiles TypeScript to `main.js` (and runs type-checking).
+
+4. **Copy into the test vault (for local testing)**
+   ```bash
+   npm run test-copy
+   ```
+   This copies `main.js`, `manifest.json`, and `styles.css` into `test-vault/.obsidian/plugins/anything-as-md/`.
+
+5. **Try it in Obsidian**
+   - Open the `test-vault` folder in this repo as a vault in Obsidian.
+   - Go to **Settings → Community plugins** and enable **Anything as Markdown**.
+
+6. **Develop**
+   - Edit source in `src/` (e.g. `main.ts`, `settings.ts`).
+   - Run `npm run build` then `npm run test-copy` to refresh the test vault, or use `npm run dev` for watch mode (rebuilds on save; run `npm run test-copy` when you want to update the test vault).
+   - Run `npm run lint` to check code style.
 
 ## Releasing new releases
 
@@ -44,47 +84,6 @@ Quick starting guide for new plugin devs:
 - Make sure you have a `README.md` file in the root of your repo.
 - Make a pull request at https://github.com/obsidianmd/obsidian-releases to add your plugin.
 
-## How to use
-
-- Clone this repo.
-- Make sure your NodeJS is at least v16 (`node --version`).
-- `npm i` or `yarn` to install dependencies.
-- `npm run dev` to start compilation in watch mode.
-
 ## Manually installing the plugin
 
-- Copy over `main.js`, `styles.css`, `manifest.json` to your vault `VaultFolder/.obsidian/plugins/your-plugin-id/`.
-
-## Improve code quality with eslint
-- [ESLint](https://eslint.org/) is a tool that analyzes your code to quickly find problems. You can run ESLint against your plugin to find common bugs and ways to improve your code. 
-- This project already has eslint preconfigured, you can invoke a check by running`npm run lint`
-- Together with a custom eslint [plugin](https://github.com/obsidianmd/eslint-plugin) for Obsidan specific code guidelines.
-- A GitHub action is preconfigured to automatically lint every commit on all branches.
-
-## Funding URL
-
-You can include funding URLs where people who use your plugin can financially support it.
-
-The simple way is to set the `fundingUrl` field to your link in your `manifest.json` file:
-
-```json
-{
-    "fundingUrl": "https://buymeacoffee.com"
-}
-```
-
-If you have multiple URLs, you can also do:
-
-```json
-{
-    "fundingUrl": {
-        "Buy Me a Coffee": "https://buymeacoffee.com",
-        "GitHub Sponsor": "https://github.com/sponsors",
-        "Patreon": "https://www.patreon.com/"
-    }
-}
-```
-
-## API Documentation
-
-See https://docs.obsidian.md
+- Copy over `main.js`, `styles.css`, `manifest.json` from the latest release to your vault `VaultFolder/.obsidian/plugins/anything-as-md/`.

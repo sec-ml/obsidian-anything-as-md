@@ -1,8 +1,10 @@
-/*
-
-This CSS file will be included with your plugin, and
-available in the app when your plugin is enabled.
-
-If your plugin does not need CSS, delete this file.
-
-*/
+/* reload message shows when extensions list has been changed */
+.anything-as-md-reload-hint {
+	margin-top: 0.75em;
+}
+.anything-as-md-reload-hint .anything-as-md-reload-text {
+	margin-right: 0.5em;
+}
+.anything-as-md-reload-btn {
+	margin-left: 0.25em;
+}

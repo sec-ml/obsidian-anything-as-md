@@ -1,11 +1,9 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
+	"id": "anything-as-md",
+	"name": "Anything as Markdown",
 	"version": "1.0.0",
-	"minAppVersion": "0.15.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
+	"minAppVersion": "1.9.12",
+	"description": "Allow Obsidian to read any file extension as markdown (e.g. mdx, svx, rmd, qmd). User-configurable list in settings.",
+	"author": "sec-ml",
 	"isDesktopOnly": false
 }

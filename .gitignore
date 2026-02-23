@@ -20,3 +20,12 @@ data.json
 
 # Exclude macOS Finder (System Explorer) View States
 .DS_Store
+
+# Test vault: copied plugin files (run npm run test-copy to populate)
+test-vault/.obsidian/plugins/anything-as-md/
+
+# Other test vault files
+test-vault/.obsidian/workspace.json
+test-vault/.obsidian/core-plugins.json
+test-vault/.obsidian/appearance.json
+test-vault/.obsidian/app.json

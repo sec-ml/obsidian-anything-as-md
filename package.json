@@ -1,12 +1,13 @@
 {
-	"name": "obsidian-sample-plugin",
+	"name": "anything-as-md",
 	"version": "1.0.0",
-	"description": "This is a sample plugin for Obsidian (https://obsidian.md)",
+	"description": "Allow Obsidian to read any file extension as markdown (e.g. mdx, svx, rmd, qmd). User-configurable list in settings.",
 	"main": "main.js",
 	"type": "module",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
 		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
+		"test-copy": "node scripts/copy-to-test-vault.mjs",
 		"version": "node version-bump.mjs && git add manifest.json versions.json",
 		"lint": "eslint ."
 	},
