@@ -73,14 +73,12 @@ export class AnythingAsMdSettingTab extends PluginSettingTab {
 		// Fix lint error: Don't set innerHTML. Build description with DOM elements.
 		indexSetting.descEl.empty();
 		const strong1 = indexSetting.descEl.createEl("strong");
-		// eslint-disable-next-line
-		strong1.setText("⚠ Dangerous, experimental ⚠ ");
+		strong1.setText("Dangerous, experimental. ");
 		indexSetting.descEl.createSpan({
 			text: "Makes these files behave like normal .md notes. Tricks Obsidian into thinking they are .md files/caching them. May (probably will) break on future Obsidian versions. ",
 		});
 		const strong2 = indexSetting.descEl.createEl("strong");
-		// eslint-disable-next-line
-		strong2.setText("⚠ Use at your own risk ⚠");
+		strong2.setText("Use at your own risk.");
 
 		this.reloadHintEl = containerEl.createDiv({ cls: "anything-as-md-reload-hint" });
 		this.reloadHintEl.setCssProps({ display: "none" });
