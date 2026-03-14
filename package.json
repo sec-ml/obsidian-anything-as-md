@@ -1,6 +1,6 @@
 {
 	"name": "anything-as-md",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "Very simple plugin that allows any file extension to be registered as Markdown (e.g. mdx, svx, rmd, qmd, mdown, mkdn, mkd, mdwn, mdtxt, mdtext, myst, markua). User-configurable in settings.",
 	"main": "main.js",
 	"type": "module",
