@@ -4,6 +4,8 @@ Obsidian is great at markdown... that's what it does. But sometimes markdown &ne
 
 There are a few plugins that add support for specfic extensions (`.mdx` probably being the most common), but `Anything as .md` allows you to enter a list of extensions that you want Obsidian to recognise as markdown syntax.
 
+Experimental feature: It will also allow Obsidian to index non-md files as though they are .md. This overrides some built-in logic. While it seems stable, it is currently being tested, and nothing is guaranteed/no support is offered.
+
 ## What extensions are supported?
 
 Well... any! But I guess for findability reasons, I'll list some:
@@ -27,7 +29,7 @@ Well... any! But I guess for findability reasons, I'll list some:
 
 ## Will Obsidian read my files correctly?
 
-Markdown syntax will be understood and rendered correctly. I have no idea how other elements (jsx blocks, R code blocks, etc.) will fare. This plugin is solely for enabling visibility of the file, anything beyond that is up to you.
+Markdown syntax will be understood and rendered correctly. I have no idea how other elements (jsx blocks, R code blocks, etc.) will fare. This plugin is solely for enabling visibility of the file, and optionally/experimentally, forcing the file to be recognised and treated as native .md.
 
 ## How to contribute to this plugin
 
