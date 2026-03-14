@@ -59,7 +59,7 @@ export default class AnythingAsMdPlugin extends Plugin {
 		while (this.revertFuncs.length > 0) {
 			const undo = this.revertFuncs.pop();
 			try {
-				undo && undo();
+				if (undo) undo();
 			} catch {
 				// Ignore potential (lol) errors.
 			}
@@ -100,13 +100,15 @@ export default class AnythingAsMdPlugin extends Plugin {
 	// Obsidian's getMarkdownFiles() only returns .md files. Override it so the
 	// list also includes our extra extensions (graph, search, backlinks use this).
 	private patchGetMarkdownFiles() {
-		const vault: any = this.app.vault;
+		// Fix lint error: use minimal type cast instead of any so we can assign to getMarkdownFiles.
+		const vault = this.app.vault as { getMarkdownFiles?: () => TFile[] };
 		if (typeof vault.getMarkdownFiles !== "function") {
 			return;
 		}
 
 		// Save original function so we can restore if plugin is disabled.
-		const originalGetMarkdownFiles = vault.getMarkdownFiles.bind(vault) as () => TFile[];
+		// Fix lint error: bind result already has a type.
+		const originalGetMarkdownFiles = vault.getMarkdownFiles.bind(vault);
 		this.revertFuncs.push(() => {
 			vault.getMarkdownFiles = originalGetMarkdownFiles;
 		});
@@ -144,7 +146,15 @@ export default class AnythingAsMdPlugin extends Plugin {
 	// Obsidian only indexes when file.extension is "md" and getCache() only returns data for .md paths.
 	// Patch computeFileMetadataAsync (spoof extension to "md" during compute) and getCache (look up by hash for our extensions).
 	private patchMetadataCache() {
-		const mc: any = this.app.metadataCache;
+		// Fix lint error: Doesn't like 'any' and unsafe member access. Use a minimal type for the
+		// internal APIs we patch so we can assign/call without 'any'.
+		type MetadataCachePatchable = {
+			computeFileMetadataAsync?: (file: TFile) => Promise<unknown>;
+			getCache?: (path: string) => unknown;
+			fileCache?: Record<string, { hash?: string }>;
+			metadataCache?: Record<string, unknown>;
+		};
+		const mc = this.app.metadataCache as MetadataCachePatchable;
 
 		// #2: computeFileMetadataAsync
 		// check mc.computeFileMetadataAsync is available (internal func, may change in future, etc.)
@@ -187,6 +197,8 @@ export default class AnythingAsMdPlugin extends Plugin {
 		// Like #2,check mc.getCache is available (internal func, may change in future, etc.)
 		// and that fileCache and metadataCache are also available.
 		if (typeof mc.getCache === "function" && mc.fileCache && mc.metadataCache) {
+			const fileCache = mc.fileCache;
+			const metadataCache = mc.metadataCache;
 			const originalGetCache = mc.getCache.bind(mc);
 			this.revertFuncs.push(() => {
 				mc.getCache = originalGetCache;
@@ -208,10 +220,10 @@ export default class AnythingAsMdPlugin extends Plugin {
 				}
 
 				// For our fake markdown files, try to look up cached metadata by hash
-				const fileEntry = mc.fileCache[path];
+				const fileEntry = fileCache[path];
 				if (!fileEntry || !fileEntry.hash) return null;
 
-				return mc.metadataCache[fileEntry.hash] ?? null;
+				return metadataCache[fileEntry.hash] ?? null;
 			};
 		}
 	}
@@ -249,7 +261,13 @@ export default class AnythingAsMdPlugin extends Plugin {
 	// Tell metadataCache to recompute metadata for this file. Prefer (override func) computeFileMetadataAsync but fallback to older internal methods.
 	// Currently available functions for metadata cache refresh/triggering: computeFileMetadataAsync, onCreateOrModify, computeMetadataAsync.
 	private async refreshMetadataForFile(file: TFile, showNoticeOnFailure: boolean) {
-		const metadataCache = this.app.metadataCache as any;
+		// Fix lint error: Doesn't like 'any'. Add types for internal refresh methods.
+		type MetadataCacheRefreshable = {
+			computeFileMetadataAsync?: (file: TFile) => Promise<unknown>;
+			onCreateOrModify?: (file: TFile) => Promise<unknown> | void;
+			computeMetadataAsync?: (bytes: Uint8Array) => Promise<unknown>;
+		};
+		const metadataCache = this.app.metadataCache as MetadataCacheRefreshable;
 
 		try {
 			if (typeof metadataCache.computeFileMetadataAsync === "function") {
