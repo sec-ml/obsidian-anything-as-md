@@ -1,4 +1,4 @@
-/* reload message shows when extensions list has been changed */
+/* reload message shows when extensions list has been changed, or when experimental indexing is enabled/disabled */
 .anything-as-md-reload-hint {
 	margin-top: 0.75em;
 }
@@ -7,4 +7,18 @@
 }
 .anything-as-md-reload-btn {
 	margin-left: 0.25em;
+}
+
+/* extension label override shown in sidebar for configured extensions when experimental indexing is enabled. Mirror default styling but italicise to distinguish. */
+.anything-as-md-ext-label {
+	display: inline-block;
+	margin-left: auto;
+	padding: 0.15em 0.5em;
+	border-radius: 1em;
+	font-size: 0.7em;
+	font-weight: 500;
+	font-style: italic;
+	color: var(--text-muted);
+	background-color: var(--background-modifier-border);
+	border: 1px solid var(--background-modifier-border);
 }
