@@ -360,12 +360,10 @@ export default class AnythingAsMdPlugin extends Plugin {
 			if (!this.extraExtensions.includes(ext)) return;
 
 			this.removeDefaultExtensionPill(titleEl, ext);
-			const pill = titleEl.createSpan
-				? titleEl.createSpan({
-						text: ext.toUpperCase(),
-						cls: "anything-as-md-ext-label",
-				  })
-				: titleEl.appendChild(activeDocument.createElement("span"));
+			const pill = titleEl.createSpan({
+					text: ext.toUpperCase(),
+					cls: "anything-as-md-ext-label",
+			});
 
 			if (!pill.instanceOf(HTMLElement)) return;
 		});
