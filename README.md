@@ -1,4 +1,4 @@
-# Anything as md
+# Anything as Markdown
 
 Obsidian is great at markdown... that's what it does. But sometimes markdown &ne; `.md`.
 
