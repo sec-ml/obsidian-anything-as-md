@@ -44,11 +44,11 @@ export class AnythingAsMdSettingTab extends PluginSettingTab {
 		new Setting(containerEl)
 			.setName("File extensions to open as Markdown")
 			.setDesc(
-				"Comma-separated extensions to open as Markdown (e.g.: mdx, svx, rmd, qmd)"
+				"Comma-separated extensions to open as Markdown (e.g. Mdx, svx, rmd, qmd)"
 			)
 			.addText((text) =>
 				text
-					.setPlaceholder("E.g.: mdx, svx, rmd")
+					.setPlaceholder("E.g. Mdx, svx, rmd")
 					.setValue(this.plugin.settings.extensionsList)
 					.onChange(async (value) => {
 						this.plugin.settings.extensionsList = value;
@@ -120,7 +120,7 @@ export class AnythingAsMdSettingTab extends PluginSettingTab {
 			return;
 		}
 		// schedule re-enable for after plugin disable
-		setTimeout(() => {
+		window.setTimeout(() => {
 			plugins
 				.enablePlugin?.(PLUGIN_ID)
 				?.then(() => {

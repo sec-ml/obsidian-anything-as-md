@@ -313,14 +313,14 @@ export default class AnythingAsMdPlugin extends Plugin {
 		// Update pills when active file changes. Run in timeout callback so Obsidian updates DOM first.
 		this.registerEvent(
 			this.app.workspace.on("file-open", () => {
-				setTimeout(() => this.updateLabels(), 0);
+				window.setTimeout(() => this.updateLabels(), 0);
 			})
 		);
 
 		// When files are renamed/changed, explorer rows may move. Run in timeout callback so DOM is updated.
 		this.registerEvent(
 			this.app.vault.on("rename", () => {
-				setTimeout(() => this.updateLabels(), 0);
+				window.setTimeout(() => this.updateLabels(), 0);
 			})
 		);
 
@@ -335,7 +335,7 @@ export default class AnythingAsMdPlugin extends Plugin {
 		const dotUpper = `.${extUpper}`;
 		const dotLower = `.${extLower}`;
 		container.querySelectorAll("span, div").forEach((el) => {
-			if (!(el instanceof HTMLElement) || el.classList.contains("anything-as-md-ext-label")) return;
+			if (!el.instanceOf(HTMLElement) || el.classList.contains("anything-as-md-ext-label")) return;
 			const text = (el.textContent || "").trim();
 			if (text === extUpper || text === extLower || text === dotUpper || text === dotLower) {
 				el.remove();
@@ -345,11 +345,11 @@ export default class AnythingAsMdPlugin extends Plugin {
 
 	// Look through sidebar items (DOM, not files in vault) & add label for each row where extension is in our list.
 	private updateLabels() {
-		document
+		activeDocument
 			.querySelectorAll(".nav-file .anything-as-md-ext-label")
 			.forEach((el) => el.remove());
 
-		document.querySelectorAll(".nav-file-title[data-path]").forEach((el) => {
+		activeDocument.querySelectorAll(".nav-file-title[data-path]").forEach((el) => {
 			const titleEl = el as HTMLElement;
 			const path = titleEl.getAttribute("data-path");
 			if (!path) return;
@@ -360,14 +360,12 @@ export default class AnythingAsMdPlugin extends Plugin {
 			if (!this.extraExtensions.includes(ext)) return;
 
 			this.removeDefaultExtensionPill(titleEl, ext);
-			const pill = titleEl.createSpan
-				? titleEl.createSpan({
-						text: ext.toUpperCase(),
-						cls: "anything-as-md-ext-label",
-				  })
-				: titleEl.appendChild(document.createElement("span"));
+			const pill = titleEl.createSpan({
+					text: ext.toUpperCase(),
+					cls: "anything-as-md-ext-label",
+			});
 
-			if (!(pill instanceof HTMLElement)) return;
+			if (!pill.instanceOf(HTMLElement)) return;
 		});
 	}
 }

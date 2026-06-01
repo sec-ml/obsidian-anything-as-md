@@ -1,8 +1,8 @@
-# Anything as md
+# Anything as Markdown
 
 Obsidian is great at markdown... that's what it does. But sometimes markdown &ne; `.md`.
 
-There are a few plugins that add support for specfic extensions (`.mdx` probably being the most common), but `Anything as .md` allows you to enter a list of extensions that you want Obsidian to recognise as markdown syntax.
+There are a few plugins that add support for specfic extensions (`.mdx` probably being the most common), but `Anything as Markdown` allows you to enter a list of extensions that you want Obsidian to recognise as markdown syntax.
 
 Experimental feature: It will also allow Obsidian to index non-md files as though they are .md. This overrides some built-in logic. While it seems stable, it is currently being tested, and nothing is guaranteed/no support is offered.
 
