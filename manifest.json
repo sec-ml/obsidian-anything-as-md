@@ -1,7 +1,7 @@
 {
 	"id": "anything-as-md",
 	"name": "Anything as Markdown",
-	"version": "1.2.1",
+	"version": "1.2.2",
 	"minAppVersion": "1.13.0",
 	"description": "Allows any file extension to be registered as Markdown (e.g. mdx, svx, rmd, qmd, mdown, mkdn, mkd, mdwn, mdtxt, mdtext, myst, markua). User-configurable in settings. Experimental setting to allow indexing of files (not yet search indexing).",
 	"author": "sec-ml",
