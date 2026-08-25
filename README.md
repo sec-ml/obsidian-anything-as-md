@@ -36,27 +36,34 @@ Markdown syntax will be understood and rendered correctly. I have no idea how ot
 1. **Fork and clone**
    - [Fork this repo](https://github.com/sec-ml/anything-as-md/fork).
    - Clone your fork:
+
    ```bash
    git clone https://github.com/<your username>/anything-as-md.git
    cd anything-as-md
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
+
    Node.js 16+ is required (`node --version`).
 
 3. **Build the plugin**
+
    ```bash
    npm run build
    ```
+
    This compiles TypeScript to `main.js` (and runs type-checking).
 
 4. **Copy into the test vault (for local testing)**
+
    ```bash
    npm run test-copy
    ```
+
    This copies `main.js`, `manifest.json`, and `styles.css` into `test-vault/.obsidian/plugins/anything-as-md/`.
 
 5. **Try it in Obsidian**

@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.2.0 - 2026-08-25
+
+- Migrated settings to [declarative API](https://docs.obsidian.md/plugins/guides/migrate-declarative-settings)
+- Bumped minimum Obsidian version to 1.13.0 (for declarative settings API), bumped plugin to next minor version
+- New-style settings row for intially-hidden reload hint
+- Bumped `eslint-plugin-obsidianmd` to `^0.4.2`
+- Added artefact attestations for plugin page Scorecard
+- Added `prettier`
+- Description rewording
+
 ## 1.1.2 - 2026-06-01
 
 - [Obsidian Scorecard](https://community.obsidian.md/account/plugins/anything-as-md) fixes and ESLint updates
