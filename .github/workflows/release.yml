@@ -2,6 +2,7 @@
 # For manual runs: enter version number and the workflow creates the tag.
 # Release notes are extracted from CHANGELOG.md (since the last
 # release - i.e. can include multiple versions).
+# Handles artefact attestations (for security scorecard).
 
 name: Release
 
@@ -18,8 +19,12 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    # https://docs.github.com/en/actions/how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations
+    # would only need contents: read, but as part of release, it already had/needed write.
     permissions:
-      contents: write   # create release and upload assets
+      contents: write
+      attestations: write
+      id-token: write
 
     steps:
       - name: Checkout
@@ -36,6 +41,15 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Generate artefact attestation
+        uses: actions/attest@v4
+        with:
+          # Multiple items: https://github.com/actions/attest/blob/main/README.md#identify-multiple-subjects
+          subject-path: |
+            main.js
+            manifest.json
+            styles.css
 
       - name: Extract changelog since last release
         id: changelog
