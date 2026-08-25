@@ -13,7 +13,6 @@ export default tseslint.config(
         projectService: {
           allowDefaultProject: ["eslint.config.js", "manifest.json"],
         },
-        tsconfigRootDir: import.meta.dirname,
         extraFileExtensions: [".json"],
       },
     },
