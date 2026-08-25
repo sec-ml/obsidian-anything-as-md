@@ -1,6 +1,10 @@
 # Changelog
 
-## 1.2.0 - 2026-08-25
+## 1.2.1 - 2026-08-25
+
+- Fixed description error
+
+## 1.2.0 - 2026-08-25 _(no release)_
 
 - Migrated settings to [declarative API](https://docs.obsidian.md/plugins/guides/migrate-declarative-settings)
 - Bumped minimum Obsidian version to 1.13.0 (for declarative settings API), bumped plugin to next minor version
