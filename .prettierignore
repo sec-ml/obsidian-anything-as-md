@@ -1,0 +1,6 @@
+test-vault/
+package-lock.json
+versions.json
+CHANGELOG.md
+manifest.json
+package.json
