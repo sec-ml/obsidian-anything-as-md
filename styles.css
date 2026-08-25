@@ -1,5 +1,6 @@
 /* reload message shows when extensions list has been changed, or when experimental indexing is enabled/disabled */
 .anything-as-md-reload-hint {
+	display: block;
 	margin-top: 0.75em;
 }
 .anything-as-md-reload-hint .anything-as-md-reload-text {
