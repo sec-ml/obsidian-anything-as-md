@@ -1,6 +1,14 @@
 # Changelog
 
-## 1.2.1 - 2026-08-25
+## 1.2.2 - 2026-08-25
+
+- Fixed eslint warning on Obsidian community [plugin page](https://community.obsidian.md/account/plugins/anything-as-md):
+```
+Unsafe assignment of an error or any typed value
+@typescript-eslint/no-unsafe-assignment
+```
+
+## 1.2.1 - 2026-08-25 _(no release)_
 
 - Fixed description error
 
