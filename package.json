@@ -1,7 +1,7 @@
 {
 	"name": "anything-as-md",
 	"version": "1.2.0",
-	"description": "Allows any file extension to be registered as Markdown (e.g. mdx, svx, rmd, qmd, mdown, mkdn, mkd, mdwn, mdtxt, mdtext, myst, markua). User-configurable in settings.",
+	"description": "Allows any file extension to be registered as Markdown (e.g. mdx, svx, rmd, qmd, mdown, mkdn, mkd, mdwn, mdtxt, mdtext, myst, markua). User-configurable in settings. Experimental setting to allow Obsidian-indexing of files (not yet search indexing). ",
 	"main": "main.js",
 	"type": "module",
 	"scripts": {
